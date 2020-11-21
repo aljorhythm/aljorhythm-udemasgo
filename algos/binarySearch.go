@@ -1,13 +1,14 @@
 package algos
 
-import "fmt"
-
 func _binarySearchRecursive(arr []int, target, low, high int) int {
+	if len(arr) == 0 {
+		return -1
+	}
+
 	if low > high {
 		return -1
 	}
 	mid := int((low + high) / 2)
-	fmt.Println(low, high, mid)
 
 	if arr[mid] == target {
 		return mid
@@ -25,11 +26,15 @@ func BinarySearchRecursive(arr []int, target int) int {
 
 // BinarySearchIterative searches target in sorted array recursively
 func BinarySearchIterative(arr []int, target int) int {
+	if len(arr) == 0 {
+		return -1
+	}
 	low := 0
-	high := len(arr)
-	mid := int((low + high) / 2)
+	high := len(arr) - 1
+	var mid int
+	for low <= high {
+		mid = int((low + high) / 2)
 
-	for low < high {
 		if arr[mid] == target {
 			return mid
 		} else if arr[mid] > target {
