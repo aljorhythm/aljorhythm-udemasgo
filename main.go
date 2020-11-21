@@ -6,10 +6,7 @@ import (
 	"github.com/aljorhythm/aljorhythm-udemasgo/utility"
 )
 
-func closure() {
-
-}
-
+// demonstrates higher order function, function closures
 func addOrSubtract() {
 	operations := map[string](func(int, int) int){"+": utility.Add, "-": utility.Minus}
 	x, y := 6, 7
@@ -18,16 +15,24 @@ func addOrSubtract() {
 	}
 }
 
-func printTheySaidSo() {
-	bytes, err := utility.Theysaidso()
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println(string(*bytes))
-	}
+// api call
+func printTheySaidSo(endSignal chan bool) {
+	go func() {
+		bytes, err := utility.Theysaidso()
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			fmt.Println(string(*bytes))
+		}
+		endSignal <- true
+	}()
 }
 
 func main() {
 	fmt.Println(utility.GetHello())
-	printTheySaidSo()
+	endSignal := make(chan bool)
+	printTheySaidSo(endSignal)
+	addOrSubtract()
+	<-endSignal
+	fmt.Println("end")
 }
