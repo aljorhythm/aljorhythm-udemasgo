@@ -1,2 +1,3 @@
-# udemasgo-sec1-intro
-Udemy - Mastering Go, Section 1
+# Udemy - Mastering Go Programming
+
+Codes
