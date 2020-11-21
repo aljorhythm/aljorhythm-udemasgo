@@ -7,7 +7,7 @@ import (
 
 // Theysaidso what they said so in bytes
 func Theysaidso() (*[]byte, error) {
-	resp, err := http.Get("http://api.theysaidso.com/qod.json")
+	resp, err := http.Get("https://raw.githubusercontent.com/aljorhythm/aljorhythm-udemasgo/main/.gitignore")
 	if err != nil {
 		return nil, err
 	}
