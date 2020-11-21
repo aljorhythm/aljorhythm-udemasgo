@@ -62,7 +62,6 @@ func main() {
 	addOrSubtract()
 	pointers()
 	flowControl()
-
 	<-endSignal
 	fmt.Println("end")
 }
