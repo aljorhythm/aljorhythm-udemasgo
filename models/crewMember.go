@@ -9,17 +9,17 @@ type CrewMember struct {
 }
 
 // ToString string representation
-func (crewMember *CrewMember) ToString() string {
+func (crewMember CrewMember) ToString() string {
 	return fmt.Sprintf("%d %s", crewMember.id, crewMember.name)
 }
 
 // GetName get name
-func (crewMember *CrewMember) GetName() string {
+func (crewMember CrewMember) GetName() string {
 	return crewMember.name
 }
 
 // GetID get id
-func (crewMember *CrewMember) GetID() int {
+func (crewMember CrewMember) GetID() int {
 	return crewMember.id
 }
 
