@@ -4,18 +4,11 @@ import (
 	"testing"
 
 	"github.com/aljorhythm/aljorhythm-udemasgo/models"
+	"github.com/aljorhythm/aljorhythm-udemasgo/utility"
 )
 
 func TestMain(t *testing.T) {
 	t.Log("Put something to test")
-}
-
-func assertIntEquals(t *testing.T, msg string, actual, expected int) {
-	if actual == expected {
-		t.Log(msg)
-	} else {
-		t.Errorf("FAILED: %s\nExpected %d, got %d", msg, expected, actual)
-	}
 }
 
 func TestSlices(t *testing.T) {
@@ -24,14 +17,14 @@ func TestSlices(t *testing.T) {
 	s := []int{0, 2, 3, 4, 5}
 	s1 := s[0:2]
 
-	assertIntEquals(t, "s1 length is 2", len(s1), 2)
+	utility.AssertIntEquals(t, "s1 length is 2", len(s1), 2)
 
-	assertIntEquals(t, "s[0] is 0", s[0], 0)
-	assertIntEquals(t, "s1[0] is 0", s1[0], 0)
+	utility.AssertIntEquals(t, "s[0] is 0", s[0], 0)
+	utility.AssertIntEquals(t, "s1[0] is 0", s1[0], 0)
 
 	s[0] = 1
-	assertIntEquals(t, "s[0] is 1", s[0], 1)
-	assertIntEquals(t, "s1[0] is 1", s1[0], 1)
+	utility.AssertIntEquals(t, "s[0] is 1", s[0], 1)
+	utility.AssertIntEquals(t, "s1[0] is 1", s1[0], 1)
 }
 
 func TestMaps(t *testing.T) {
@@ -40,7 +33,7 @@ func TestMaps(t *testing.T) {
 		2: models.NewCrewMember(2, "Jane"),
 	}
 
-	assertIntEquals(t, "there are 2 crewMembers", len(crewMembers), 2)
+	utility.AssertIntEquals(t, "there are 2 crewMembers", len(crewMembers), 2)
 
 	if _, found := crewMembers[0]; found {
 		t.Error("Should not have found member")
