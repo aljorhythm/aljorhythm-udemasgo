@@ -45,12 +45,24 @@ func pointers() {
 	fmt.Println("new x", x)
 }
 
+func flowControl() {
+	i := 5
+	increment := utility.IncrementBy(3)(i)
+
+	for i <= 15 {
+		fmt.Println("After increment", i)
+		i = increment()
+	}
+}
+
 func main() {
 	fmt.Println(utility.GetHello())
 	endSignal := make(chan bool)
 	printTheySaidSo(endSignal)
 	addOrSubtract()
 	pointers()
+	flowControl()
+
 	<-endSignal
 	fmt.Println("end")
 }

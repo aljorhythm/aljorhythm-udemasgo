@@ -12,12 +12,13 @@ func Minus(x, y int) (res int) {
 	return res
 }
 
-func incrementBy(incrementBy int) (startsWith func(int) func() int) {
+// IncrementBy a number and start with x
+func IncrementBy(incrementBy int) (startsWith func(int) func() int) {
 	return func(start int) func() int {
 		curr := start
 		return func() int {
 			curr += incrementBy
-			return start
+			return curr
 		}
 	}
 }
