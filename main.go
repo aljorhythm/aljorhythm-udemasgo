@@ -28,11 +28,29 @@ func printTheySaidSo(endSignal chan bool) {
 	}()
 }
 
+func changeX(x *int) {
+	*x = 2
+}
+
+const (
+	one = 1
+	two = 2
+)
+
+func pointers() {
+	x := one
+	xPointer := &x
+	fmt.Println("old x", x)
+	changeX(xPointer)
+	fmt.Println("new x", x)
+}
+
 func main() {
 	fmt.Println(utility.GetHello())
 	endSignal := make(chan bool)
 	printTheySaidSo(endSignal)
 	addOrSubtract()
+	pointers()
 	<-endSignal
 	fmt.Println("end")
 }
